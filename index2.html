@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bridge - Democratizing Tech Careers</title>
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo span {
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 10px;
+      margin-right: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      top: 10px;
+      left: 10px;
+      border-radius: 5px;
+      animation: rotate 3s linear infinite;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav-link {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .login-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    
+    .login-btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 0;
+      min-height: 80vh;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero h1 span {
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .hero h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-color: rgba(67, 97, 238, 0.2);
+      z-index: -1;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .primary-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .primary-btn:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+    }
+    
+    .secondary-btn {
+      background-color: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .secondary-btn:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .hero-image {
+      width: 500px;
+      height: 400px;
+      position: relative;
+    }
+    
+    .hero-image .circle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--primary);
+      opacity: 0.1;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .hero-image .c1 {
+      width: 200px;
+      height: 200px;
+      top: 20px;
+      right: 20px;
+      animation-delay: 0s;
+    }
+    
+    .hero-image .c2 {
+      width: 150px;
+      height: 150px;
+      top: 100px;
+      right: 100px;
+      background-color: var(--accent);
+      animation-delay: 2s;
+    }
+    
+    .hero-image .c3 {
+      width: 100px;
+      height: 100px;
+      top: 200px;
+      right: 200px;
+      background-color: var(--secondary);
+      animation-delay: 4s;
+    }
+    
+    .hero-image .graph {
+      position: absolute;
+      width: 300px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: flex-end;
+      gap: 15px;
+    }
+    
+    .hero-image .bar {
+      flex: 1;
+      background-color: var(--primary);
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      animation: grow 1.5s ease-out;
+    }
+    
+    .hero-image .b1 { height: 60%; animation-delay: 0.2s; }
+    .hero-image .b2 { height: 90%; animation-delay: 0.4s; }
+    .hero-image .b3 { height: 75%; animation-delay: 0.6s; }
+    .hero-image .b4 { height: 100%; animation-delay: 0.8s; background-color: var(--accent); }
+    .hero-image .b5 { height: 85%; animation-delay: 1.0s; }
+    
+    .hero-image .person {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 3px solid var(--primary);
+      bottom: -25px;
+      animation: moveUpDown 3s ease-in-out infinite;
+    }
+    
+    .hero-image .p1 { left: 10%; animation-delay: 0.5s; }
+    .hero-image .p2 { left: 30%; animation-delay: 1.2s; }
+    .hero-image .p3 { left: 70%; animation-delay: 0.8s; }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes grow {
+      from { height: 0; }
+    }
+    
+    @keyframes moveUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background-color: #f8f9fa;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .section-title p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(67, 97, 238, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    .feature-card p {
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background-color: white;
+      border-radius: 10px;
+      width: 95%;
+      max-width: 500px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: modalFadeIn 0.3s;
+    }
+    
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #555;
+    }
+    
+    .modal-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .modal-header h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    
+    .tab-buttons {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .file-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #ddd;
+      border-radius: 5px;
+      padding: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .file-upload:hover {
+      border-color: var(--primary);
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+    
+    .file-upload-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .file-upload p {
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    .file-upload input {
+      display: none;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Dashboard */
+    .dashboard {
+      display: none;
+      padding: 30px;
+    }
+    
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .dashboard-title {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    
+    .dashboard-menu {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .dashboard-nav {
+      display: flex;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .dashboard-nav-item {
+      padding: 15px 30px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .dashboard-nav-item.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .dashboard-content {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .dashboard-tab {
+      display: none;
+    }
+    
+    .dashboard-tab.active {
+      display: block;
+    }
+    
+    .resume-analysis, .job-matching {
+      margin-top: 20px;
+    }
+    
+    .analysis-result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      border-left: 5px solid var(--primary);
+    }
+    
+    .result-title {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+    
+    .result-list {
+      list-style-type: none;
+    }
+    
+    .result-list li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    
+    .result-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .candidate-card {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f8f9fa;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+    }
+    
+    .candidate-card:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .candidate-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-right: 20px;
+    }
+    
+    .candidate-info {
+      flex: 1;
+    }
+    
+    .candidate-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .candidate-college {
+      color: #555;
+      margin-bottom: 5px;
+    }
+    
+    .candidate-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .skill-tag {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .candidate-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .action-btn:hover {
+      color: var(--secondary);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .footer-links {
+      list-style-type: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #aaa;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+      }
+      
+      .hero-content {
+        margin: 0 auto;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .hero-image {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span>Bridge</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">How it Works</a>
+        <a href="#" class="nav-link">Success Stories</a>
+        <a href="#" class="nav-link">About</a>
+      </div>
+      <button class="login-btn" onclick="openModal()">Login / Sign Up</button>
+    </nav>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Bridging the <span>College Tier Gap</span> with AI</h1>
+        <p>Democratizing access to tech careers through personalized learning, mentorship, and skill-based recruitment. We help talented students from all colleges showcase their true potential.</p>
+        <div class="cta-buttons">
+          <a href="#" class="primary-btn" onclick="openModal()">Get Started</a>
+          <a href="#" class="secondary-btn">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+        <div class="graph">
+          <div class="bar b1"></div>
+          <div class="bar b2"></div>
+          <div class="bar b3"></div>
+          <div class="bar b4"></div>
+          <div class="bar b5"></div>
+        </div>
+        <div class="person p1"></div>
+        <div class="person p2"></div>
+        <div class="person p3"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>How Bridge Works</h2>
+        <p>Our platform uses advanced AI to level the playing field and connect talent with opportunity.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>AI Skill Analysis</h3>
+          <p>Upload your resume or job description and get instant AI-powered analysis and personalized recommendations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Skill-Based Matching</h3>
+          <p>We match candidates based on actual skills and potential, not just the college name on their degree.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Career Growth Path</h3>
+          <p>Get a personalized roadmap to bridge skill gaps and prepare for opportunities in top tech companies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Login/Signup Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <div class="modal-header">
+        <h2>Welcome to Bridge</h2>
+        <p>Sign in to access your personalized dashboard</p>
+      </div>
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="openTab('student')">Student</button>
+        <button class="tab-btn" onclick="openTab('recruiter')">Recruiter</button>
+      </div>
+      <div id="student" class="tab-content active">
+        <form id="studentLoginForm">
+          <div class="form-group">
+            <label for="studentEmail">Email</label>
+            <input type="email" id="studentEmail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="studentPassword">Password</label>
+            <input type="password" id="studentPassword" class="form-control" required>
+          </div>
+          <button type="button" class="submit-btn" onclick="loginStudent()">Sign In</button>
+          <p style="text-align:center; margin-top:15px; color:#555;">Don't have an account? <a href="#" style="color:var(--primary);">Sign Up</a></p>
+        </form>
+      </div>
+      <div id="recruiter" class="tab-content">
+        <form id="recruiterLoginForm">
+          <div class="form-group">
+            <label for="recruiterEmail">Email</label>
+            <input type="email" id="recruiterEmail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="recruiterPassword">Password</label>
+            <input type="password" id="recruiterPassword" class="form-control" required>
+          </div>
+          <button type="button" class="submit-btn" onclick="loginRecruiter()">Sign In</button>
+          <p style="text-align:center; margin-top:15px; color:#555;">Don't have an account? <a href="#" style="color:var(--primary);">Sign Up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Student Dashboard -->
+  <section class="dashboard" id="studentDashboard">
+    <div class="container">
+      <div class="dashboard-header">
+        <h2 class="dashboard-title">Student Dashboard</h2>
+        <div class="dashboard-menu">
+          <button class="secondary-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+      <div class="dashboard-nav">
+        <button class="dashboard-nav-item active" onclick="openDashTab('resumeTab')">Resume Analysis</button>
+        <button class="dashboard-nav-item" onclick="openDashTab('jobMatchTab')">Job Matching</button>
+        <button class="dashboard-nav-item" onclick="openDashTab('profileTab')">Profile</button>
+      </div>
+      <div class="dashboard-content">
+        <div id="resumeTab" class="dashboard-tab active">
+          <h3>Resume Analysis</h3>
+          <p>Upload your resume to get AI-powered feedback and suggestions.</p>
+          <div class="file-upload" onclick="triggerFileInput('resumeUpload')">
+            <div class="file-upload-icon">📄</div>
+            <p>Click or drag to upload your resume</p>
+            <span>PDF, DOCX, or TXT format</span>
+            <input type="file" id="resumeUpload" accept=".pdf,.docx,.txt" onchange="analyzeResume()">
+          </div>
+          <div class="resume-analysis">
+            <div class="analysis-result" id="resumeResult" style="display:none;">
+              <h4 class="result-title">Resume Analysis Results</h4>
+              <ul class="result-list">
+                <li><strong>Skills to Develop:</strong> AWS Cloud Services, CI/CD pipelines</li>
+                <li><strong>Recommended Resources:</strong> AWS Certified Developer course, GitHub Actions tutorials</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="profileTab" class="dashboard-tab">
+          <h3>Your Profile</h3>
+          <p>Update your information to improve matching accuracy.</p>
+          <form id="profileForm">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" class="form-control" value="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="college">College/University</label>
+              <input type="text" id="college" class="form-control" value="ABC Engineering College">
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills (comma separated)</label>
+              <input type="text" id="skills" class="form-control" value="JavaScript, React, Node.js, MongoDB, Express">
+            </div>
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea id="bio" class="form-control" rows="4">Final year computer science student passionate about web development and machine learning.</textarea>
+            </div>
+            <button type="button" class="primary-btn">Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Recruiter Dashboard -->
+  <section class="dashboard" id="recruiterDashboard">
+    <div class="container">
+      <div class="dashboard-header">
+        <h2 class="dashboard-title">Recruiter Dashboard</h2>
+        <div class="dashboard-menu">
+          <button class="secondary-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+      <div class="dashboard-nav">
+        <button class="dashboard-nav-item active" onclick="openRecruiterTab('candidateTab')">Find Candidates</button>
+        <button class="dashboard-nav-item" onclick="openRecruiterTab('jobsTab')">Posted Jobs</button>
+        <button class="dashboard-nav-item" onclick="openRecruiterTab('companyTab')">Company Profile</button>
+      </div>
+      <div class="dashboard-content">
+        <div id="candidateTab" class="dashboard-tab active">
+          <h3>Find Matching Candidates</h3>
+          <p>Input job description to find suitable candidates across all college tiers.</p>
+          <div class="form-group">
+            <label for="recruiterJobDescription">Job Description</label>
+            <textarea id="recruiterJobDescription" class="form-control" rows="6" placeholder="Paste your job description here..."></textarea>
+          </div>
+          <button class="primary-btn" onclick="findCandidates()">Find Matching Candidates</button>
+          
+          <div id="candidateResults" style="margin-top: 30px; display: none;">
+            <h4>Matching Candidates</h4>
+            <p>We found 5 candidates matching your requirements:</p>
+            
+            <div class="candidate-card">
+              <div class="candidate-avatar">RK</div>
+              <div class="candidate-info">
+                <h4 class="candidate-name">Rahul Kumar</h4>
+                <p class="candidate-college">ABC Engineering College (Tier 3)</p>
+                <div class="candidate-skills">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">Express</span>
+                </div>
+              </div>
+              <div class="candidate-actions">
+                <button class="action-btn">View Profile</button>
+                <button class="action-btn">Contact</button>
+              </div>
+            </div>
+            
+            <div class="candidate-card">
+              <div class="candidate-avatar">AP</div>
+              <div class="candidate-info">
+                <h4 class="candidate-name">Ananya Patel</h4>
+                <p class="candidate-college">XYZ Institute of Technology (Tier 3)</p>
+                <div class="candidate-skills">
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Firebase</span>
+                  <span class="skill-tag">UI/UX</span>
+                </div>
+              </div>
+              <div class="candidate-actions">
+                <button class="action-btn">View Profile</button>
+                <button class="action-btn">Contact</button>
+              </div>
+            </div>
+            
+            <div class="candidate-card">
+              <div class="candidate-avatar">MS</div>
+              <div class="candidate-info">
+                <h4 class="candidate-name">Mohammed Siddique</h4>
+                <p class="candidate-college">Regional Engineering College (Tier 3)</p>
+                <div class="candidate-skills">
+                  <span class="skill-tag">Full Stack</span>
+                  <span class="skill-tag">MERN</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">AWS</span>
+                </div>
+              </div>
+              <div class="candidate-actions">
+                <button class="action-btn">View Profile</button>
+                <button class="action-btn">Contact</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="jobsTab" class="dashboard-tab">
+          <h3>Your Posted Jobs</h3>
+          <p>Manage your current job listings</p>
+          <div style="margin-top: 20px;">
+            <div class="candidate-card">
+              <div class="candidate-info">
+                <h4 class="candidate-name">Full Stack Developer</h4>
+                <p style="margin-bottom: 5px;">Posted: April 25, 2025</p>
+                <p>15 matching candidates found</p>
+              </div>
+              <div class="candidate-actions">
+                <button class="action-btn">View Candidates</button>
+                <button class="action-btn">Edit</button>
+              </div>
+            </div>
+            
+            <div class="candidate-card">
+              <div class="candidate-info">
+                <h4 class="candidate-name">Frontend React Developer</h4>
+                <p style="margin-bottom: 5px;">Posted: May 1, 2025</p>
+                <p>8 matching candidates found</p>
+              </div>
+              <div class="candidate-actions">
+                <button class="action-btn">View Candidates</button>
+                <button class="action-btn">Edit</button>
+              </div>
+            </div>
+          </div>
+          
+          <button class="primary-btn" style="margin-top: 20px;">Post New Job</button>
+        </div>
+        
+        <div id="companyTab" class="dashboard-tab">
+          <h3>Company Profile</h3>
+          <p>Update your company information</p>
+          <form id="companyForm">
+            <div class="form-group">
+              <label for="companyName">Company Name</label>
+              <input type="text" id="companyName" class="form-control" value="Tech Innovations Inc.">
+            </div>
+            <div class="form-group">
+              <label for="industry">Industry</label>
+              <input type="text" id="industry" class="form-control" value="Software Development">
+            </div>
+            <div class="form-group">
+              <label for="companySize">Company Size</label>
+              <select id="companySize" class="form-control">
+                <option>1-10 employees</option>
+                <option selected>11-50 employees</option>
+                <option>51-200 employees</option>
+                <option>201-500 employees</option>
+                <option>501+ employees</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="companyDescription">About Company</label>
+              <textarea id="companyDescription" class="form-control" rows="4">Tech Innovations Inc. is a growing software development company focusing on creating innovative solutions for businesses.</textarea>
+            </div>
+            <button type="button" class="primary-btn">Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Bridge</h3>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Mission</a></li>
+            <li><a href="#">Success Stories</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>For Students</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Learning Resources</a></li>
+            <li><a href="#">Mentor Connect</a></li>
+            <li><a href="#">Job Opportunities</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>For Recruiters</h3>
+          <ul class="footer-links">
+            <li><a href="#">Why Bridge?</a></li>
+            <li><a href="#">Find Talent</a></li>
+            <li><a href="#">Success Stories</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><a href="#">support@bridge.tech</a></li>
+            <li><a href="#">+1 (555) 123-4567</a></li>
+            <li><a href="#">123 Innovation St, Tech City</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bridge. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Modal functionality
+    function openModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+    
+    function closeModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+    
+    // Tab switching in modal
+    function openTab(tabName) {
+      const tabContents = document.getElementsByClassName('tab-content');
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+      
+      const tabButtons = document.getElementsByClassName('tab-btn');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+      
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+    
+    // Dashboard tab switching
+    function openDashTab(tabId) {
+      const tabs = document.getElementsByClassName('dashboard-tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      
+      const navItems = document.getElementsByClassName('dashboard-nav-item');
+      for (let i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('active');
+      }
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+    
+    // Recruiter dashboard tabs
+    function openRecruiterTab(tabId) {
+      const tabs = document.getElementsByClassName('dashboard-tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      
+      const navItems = document.getElementsByClassName('dashboard-nav-item');
+      for (let i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('active');
+      }
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+    
+    // Login functionality
+    function loginStudent() {
+      closeModal();
+      document.getElementById('studentDashboard').style.display = 'block';
+      document.querySelector('.hero').style.display = 'none';
+      document.querySelector('.features').style.display = 'none';
+      document.querySelector('footer').style.display = 'none';
+    }
+    
+    function loginRecruiter() {
+      closeModal();
+      document.getElementById('recruiterDashboard').style.display = 'block';
+      document.querySelector('.hero').style.display = 'none';
+      document.querySelector('.features').style.display = 'none';
+      document.querySelector('footer').style.display = 'none';
+    }
+    
+    function logout() {
+      document.getElementById('studentDashboard').style.display = 'none';
+      document.getElementById('recruiterDashboard').style.display = 'none';
+      document.querySelector('.hero').style.display = 'flex';
+      document.querySelector('.features').style.display = 'block';
+      document.querySelector('footer').style.display = 'block';
+    }
+    
+    // File upload
+    function triggerFileInput(inputId) {
+      document.getElementById(inputId).click();
+    }
+    
+    // Resume analysis
+    function analyzeResume() {
+      // In a real application, this would send the file to the backend for processing
+      setTimeout(() => {
+        document.getElementById('resumeResult').style.display = 'block';
+      }, 1500);
+    }
+    
+    // Job description analysis
+    function analyzeJobDescription() {
+      // In a real application, this would send the text to the backend for processing
+      setTimeout(() => {
+        document.getElementById('jobResult').style.display = 'block';
+      }, 1500);
+    }
+    
+    // Find matching candidates
+    function findCandidates() {
+      // In a real application, this would query the database for matching candidates
+      setTimeout(() => {
+        document.getElementById('candidateResults').style.display = 'block';
+      }, 1500);
+    }
+    
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('loginModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>>Strength:</strong> Your technical skills in web development are well-highlighted. Strong React and Node.js expertise.</li>
+                <li><strong>Improvement:</strong> Add more quantifiable achievements to demonstrate impact.</li>
+                <li><strong>Missing:</strong> Include details about collaborative projects or teamwork experiences.</li>
+                <li><strong>Industry Match:</strong> Your profile matches 78% of requirements for Full Stack Developer roles.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="jobMatchTab" class="dashboard-tab">
+          <h3>Job Description Analysis</h3>
+          <p>Upload a job description to analyze skill requirements and get a personalized growth plan.</p>
+          <div class="form-group">
+            <label for="jobDescription">Paste Job Description</label>
+            <textarea id="jobDescription" class="form-control" rows="6" placeholder="Paste the job description here..."></textarea>
+          </div>
+          <button class="primary-btn" onclick="analyzeJobDescription()">Analyze Job Description</button>
+          <div class="job-matching">
+            <div class="analysis-result" id="jobResult" style="display:none;">
+              <h4 class="result-title">Job Analysis Results</h4>
+              <ul class="result-list">
+                <li><strong>Key Skills Required:</strong> React, Node.js, MongoDB, AWS, CI/CD pipelines</li>
+                <li><strong>Your Match:</strong> 78% match with your current skills</li>
+                <li><strong>Your Match:</strong> 78% match with your current skills</li>
+                <li><strong>Suggested Improvements:</strong> Gain hands-on experience with AWS and CI/CD tools like Jenkins or GitHub Actions to close the skill gap.</li>
+                <li><strong>Next Steps:</strong> Work on a project that involves cloud deployment and continuous integration to boost your profile.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+                
